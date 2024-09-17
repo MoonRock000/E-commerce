@@ -39,7 +39,6 @@ const Home = ({ user }) => {
   const handleAddToCart = (product) => {
     try {
       if (!user) {
-        console.log(user);
         navigate('/login', {
           state: { redirectTo: '/', productToAdd: product },
         });

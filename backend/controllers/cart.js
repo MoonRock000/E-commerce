@@ -69,7 +69,6 @@ export const getCart = async (req, res) => {
     const cart = await Cart.findOne({ user: req.user.id }).populate(
       'products.product'
     );
-    console.log(cart);
 
     res.status(200).json(cart);
   } catch (error) {
@@ -115,7 +114,7 @@ export const removeFromCart = async (req, res) => {
 export const clearCart = async (userId) => {
   try {
     const cart = await Cart.findOne({ user: userId });
-    console.log({ cart });
+
     if (cart) {
       await cart.deleteOne();
     }
