@@ -55,10 +55,12 @@ This is a full-stack e-commerce web application built using the MERN stack. It a
    ```
 5. Create a `.env` file in the `backend` folder and add the following environment variables:
    ```
-   MONGODB_URI=your-mongodb-uri
+   MONGO_URI=your-mongodb-uri
+   JWT_SECRET=your-secret
+   AWS_REGION=your-aws-region
    AWS_ACCESS_KEY_ID=your-aws-access-key
    AWS_SECRET_ACCESS_KEY=your-aws-secret-key
-   S3_BUCKET_NAME=your-s3-bucket-name
+   AWS_S3_BUCKET_NAME=your-s3-bucket-name
    ```
 6. Start the backend server:
    ```bash
@@ -73,22 +75,24 @@ This is a full-stack e-commerce web application built using the MERN stack. It a
 
 ## UsageHosting
 
-- **User**: Navigate through the homepage to browse products, add items to the cart, checkout, and cancel orders.
+- **User**: Navigate through the homepage to browse products, add items to the cart, remove items from cart, checkout, view previous orders, and cancel orders.
 - **Admin**: Access the admin dashboard to manage products and view or edit orders.
 
 ## API Endpoints
 
 - **User Endpoints**:
 
-  - `GET /products`: Fetch all products.
-  - `POST /cart`: Add item to the cart.
-  - `POST /checkout`: Complete the checkout.
-  - `DELETE /order/:id`: Cancel an order.
+  - `GET /api/products`: Fetch all products.
+  - `POST /api/cart/add`: Add item to the cart.
+  - `PATCH /api/cart/remove`: Remove item from cart.
+  - `PATCH /api/cart`: Update shipping address.
+  - `POST /api/cart/checkout`: Complete the checkout.
+  - `DELETE /api/order/:id`: Cancel an order.
 
 - **Admin Endpoints**:
-  - `POST /admin/product`: Add a new product.
-  - `PUT /admin/product/:id`: Edit a product.
-  - `DELETE /admin/product/:id`: Delete a product.
-  - `GET /admin/orders`: View all orders.
-  - `PUT /admin/order/:id`: Edit an order.
-  - `DELETE /admin/order/:id`: Delete an order.
+  - `POST /api/product`: Add a new product.
+  - `PATCH /api/product/:id`: Edit a product.
+  - `DELETE /api/product/:id`: Delete a product.
+  - `GET /api/orders`: View all orders.
+  - `PATCH /api/order/:id`: Edit an order.
+  - `DELETE /api/order/:id`: Delete an order.
